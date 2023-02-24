@@ -29,6 +29,7 @@ commands = [
 
 command_help = ','.join(commands)
 config_help = """Specifies the configuration to use without the suffix yml. If  the parameter is omitted then ~/.pg_chameleon/configuration/default.yml is used"""
+config_path_help = """Specifies the configuration file path, default is ~/.pg_chameleon/configuration"""
 schema_help = """Specifies the schema within a source. If omitted all schemas for the given source are affected by the command. Requires the argument --source to be specified"""
 source_help = """Specifies the source within a configuration. If omitted all sources are affected by the command."""
 tables_help = """Specifies the tables within a source . If omitted all tables are affected by the command."""
@@ -42,6 +43,7 @@ truncate_help = """Truncate the existing tables instead of replacing them."""
 parser = argparse.ArgumentParser(description='Command line for pg_chameleon.',  add_help=True)
 parser.add_argument('command', type=str, help=command_help)
 parser.add_argument('--config', type=str,  default='default',  required=False, help=config_help)
+parser.add_argument('--config-path', type=str,  default='',  required=False, help=config_path_help)
 parser.add_argument('--schema', type=str,  default='*',  required=False, help=schema_help)
 parser.add_argument('--source', type=str,  default='*',  required=False, help=source_help)
 parser.add_argument('--tables', type=str,  default='*',  required=False, help=tables_help)
